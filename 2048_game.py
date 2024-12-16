@@ -163,29 +163,34 @@ def handle_input( direction ):
             for j in range(4):
                 Grid[i][ j] = stack.pop()
     else : raise ValueError("incorrect direction")
-    if(moved_in_input ==False):moved = false
+    if(moved_in_input ==False):moved = False
 def game_loop():
     global moved
     global win
     while True:
-        clear_terminal()
-        gen_new_num()
-        print_grid()
-        command =input(" mời bạn nhập lệnh để di chuyển (1:up, 2:down, 3:left, 4:right) : ")
-        if command == "1":
-            handle_input("up")
-        elif command == "2":
-            handle_input("down")
-        elif command == "3":
-            handle_input("left")
-        elif command == "4":
-            handle_input("right")
         if not moved:
             print(" bạn đã thua khi không còn ô nào để di chuyển")
             return
         elif win:
             print(" bạn win r , hay á")
             return
+        else:
+            clear_terminal()
+            gen_new_num()
+            print_grid()
+            command =input(" mời bạn nhập lệnh để di chuyển (1:up, 2:down, 3:left, 4:right, còn lại là exit) : ")
+            if command == "1":
+                handle_input("up")
+            elif command == "2":
+                handle_input("down")
+            elif command == "3":
+                handle_input("left")
+            elif command == "4":
+                handle_input("right")
+            else :
+                print("\n bai")
+                return
+
 
 
 def main():
